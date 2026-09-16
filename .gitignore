@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Notebook / local scratch
+.ipynb_checkpoints/
+metrics.py
+backtest.py
+_build_notebook.py
+_run_notebook.py
+_dump_outputs.py
+_patch_human.py
+_patch_adf.py
+_cell_out.txt
+*.csv
+*.csv.gz
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
