@@ -21,12 +21,4 @@ Academy: [SDAIA Academy](https://github.com/SDAIAAcademy)
 
 ## What’s in the notebook
 
-1. Decomposition, ACF/PACF, ADF
-2. Holt-Winters with a Ljung-Box residual check
-3. LightGBM with lag, rolling, and calendar features
-4. Expanding-window backtest, 4 folds of 24 hours
-5. MAE, RMSE, and MASE
-6. Conformal 80% intervals (coverage and width)
-7. Which model I would actually use, and why
-
-Notes on leakage, the backtest, and the interval are in [TECHNICAL.md](TECHNICAL.md).
+I cleaned the I-94 series, decomposed it, fit Holt-Winters and LightGBM, backtested both on four expanding 24-hour folds, and put an 80% interval around the LightGBM forecast. Notes on leakage and the backtest are in [TECHNICAL.md](TECHNICAL.md).

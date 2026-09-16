@@ -24,10 +24,10 @@ Design choices that did not fit cleanly in the notebook.
 
 ## Backtest design
 
-Splits come from `expanding_window_splits` in the course’s `common/backtest.py`. An **expanding** window is used, not a rolling window: I-94’s daily/weekly shape is stable across 2017–2018, so additional history should help rather than go stale. There is no analogue of the workforce series’ 2025-04-01 structural break.
+Splits come from `expanding_window_splits` in the course’s `common/backtest.py`. I used an expanding window: I-94’s daily/weekly shape is stable across 2018, so extra history should help.
 
 - Horizon: 24 hours (one diurnal cycle; the operational question is “what does tomorrow look like hour by hour”).
-- Folds: 4 (the brief requires at least 3).
+- Folds: 4.
 - Minimum train size: 90 days (2 160 hours), enough for `lag_168` plus a 168-hour rolling window.
 - Seasonal-naive and Holt-Winters are scored with `run_backtest`. LightGBM uses the same slices on the feature table so calendar/holiday columns can be attached without changing fold boundaries.
 - No fold’s training slice overlaps its own test window.
@@ -57,7 +57,7 @@ LightGBM has no native interval. An 80% conformal (split-conformal / residual-qu
 | Holt-Winters / ETS (additive trend + additive daily seasonality) | Required classical model; residual Ljung-Box on a single in-sample fit |
 | LightGBM | Required GBM; lag / rolling / calendar / lagged-weather features |
 
-The written recommendation in the notebook uses the Day 3 axes: history length, interpretability, interval support, compute budget, plus exogenous weather and holidays. Accuracy is one input, not the decision.
+The notebook recommendation uses those numbers plus whether the forecast is explainable and whether the interval is usable. Accuracy is one input, not the whole decision.
 
 ## Runtime fetch
 
